@@ -1,13 +1,15 @@
 
 ---
-##📘**AWS Cost-Optimization Lambda Automation for EC2, RDS & EBS Cleanup**
+##📘**AWS Cost-Optimization Lambda Automation for identifying stale resources from EC2, RDS & EBS and Cleanup**
 
-Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs cleanup tasks such as stopping and deleting tagged resources 
+Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs stale resource identification and cleanup tasks such as stopping and deleting tagged resources 
 ---
 ## 🚀 Architecture Overview
-1. 
-2.	EventBridge triggers Lambda at a scheduled time for tagged resources with `AutoStop=true`
-3.	AWS Lambda checks and Stops tagged resources with `AutoStop=true`
+1. Tagging the instances from the master node with the web-1 series to all the host instances with **tag.sh**
+2. Using a PEM key to SSH into the host machine and then inject **id_rsa.pub** to the remote host machines
+3.	To get the #ipaddress of all machines running the inventory file **aws_ec2.yaml** running through **ansible.cfg** to disable any errors reporting 
+4.	EventBridge triggers Lambda at a scheduled time for tagged resources with `AutoStop=true`
+5.	AWS Lambda checks and Stops tagged resources with `AutoStop=true`
 o	Stops EC2 instances
 o	Stops RDS instances
 o	Deletes EBS snapshots
