@@ -1,0 +1,60 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+
+    - name: print message
+      debug:
+        msg: "Hello-Ansible Worlds"
+
+    - name: create directory
+      file:
+        path: /home/ubuntu/test1
+        state: directory
+
+    # -------------------------
+    # Ubuntu (Debian family)
+    # -------------------------
+    - name: install maven on Ubuntu
+      apt:
+        name: maven
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: install docker.io on Ubuntu
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: install net-tools on Ubuntu
+      apt:
+        name: net-tools
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    # -------------------------
+    # Amazon Linux / RedHat
+    # -------------------------
+    - name: install maven on Amazon Linux
+      yum:
+        name: maven
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: install docker on Amazon Linux
+      yum:
+        name: docker
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: install net-tools on Amazon Linux
+      yum:
+        name: net-tools
+        state: present
+      when: ansible_os_family == "RedHat"
+
