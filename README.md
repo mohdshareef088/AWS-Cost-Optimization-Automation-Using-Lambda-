@@ -1,21 +1,26 @@
 
 ---
-## 📘 **AWS Cost-Optimization Lambda Automation for EC2, RDS & EBS Cleanup**
+##📘**AWS Cost-Optimization Lambda Automation for EC2, RDS & EBS Cleanup**
 
-## 🚀 Overview
-
-This project provides a fully automated AWS Lambda function that:
-
-- Stops EC2 instances tagged with `AutoStop=true`
-- Stops RDS instances tagged with `AutoStop=true`
-- Deletes EBS snapshots older than **7 days**
-- Deletes **unattached** EBS volumes
-- Sends a **daily cost & cleanup report** via **SNS email**
-- Runs automatically using **CloudWatch Cron Scheduler**
-
+Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs cleanup tasks such as stopping and deleting tagged resources 
 ---
+## 🚀 Architecture Overview
+1.	EventBridge triggers Lambda at a scheduled time for tagged resources with `AutoStop=true`
+2.	AWS Lambda checks and Stops tagged resources with `AutoStop=true`
+o	Stops EC2 instances
+o	Stops RDS instances
+o	Deletes EBS snapshots
+o	Deletes Unattached volumes
+2. Amazon EventBridge
+   Triggers the Lambda function on a schedule (daily).
+3.	Lambda performs cleanup
+4.	Amazon SNS
+    Sends a **daily cost & cleanup report** summarizing the cleanup.
+5.	Runs automatically using ** EventBridge Cron Scheduler**. You receive a daily summary in your inbox
+
 
 ## 📁 Project Structure overview
+----
 
 ```
 lambda-automation/
@@ -26,6 +31,23 @@ lambda-automation/
 ```
 
 ---
+
+🚀 Architecture Overview
+This automation uses three AWS services:
+1. AWS Lambda
+Runs the Python script that:
+•	Checks EC2, RDS, EBS resources
+•	Performs cleanup
+•	Sends SNS report
+2. Amazon EventBridge
+Triggers the Lambda function on a schedule (daily).
+3. Amazon SNS
+Sends a daily email report summarizing the cleanup.
+
+📸 Screenshots
+EventBridge Rule
+Add your screenshot here
+
 
 # 🌐 **Lambda Function**
 
