@@ -5,8 +5,9 @@
 Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs cleanup tasks such as stopping and deleting tagged resources 
 ---
 ## 🚀 Architecture Overview
-1.	EventBridge triggers Lambda at a scheduled time for tagged resources with `AutoStop=true`
-2.	AWS Lambda checks and Stops tagged resources with `AutoStop=true`
+1. 
+2.	EventBridge triggers Lambda at a scheduled time for tagged resources with `AutoStop=true`
+3.	AWS Lambda checks and Stops tagged resources with `AutoStop=true`
 o	Stops EC2 instances
 o	Stops RDS instances
 o	Deletes EBS snapshots
