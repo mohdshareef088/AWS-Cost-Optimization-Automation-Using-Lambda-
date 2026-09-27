@@ -31,19 +31,6 @@ lambda-automation/
 ```
 
 ---
-
-🚀 Architecture Overview
-This automation uses three AWS services:
-1. AWS Lambda
-Runs the Python script that:
-•	Checks EC2, RDS, EBS resources
-•	Performs cleanup
-•	Sends SNS report
-2. Amazon EventBridge
-Triggers the Lambda function on a schedule (daily).
-3. Amazon SNS
-Sends a daily email report summarizing the cleanup.
-
 📸 Screenshots
 EventBridge Rule
 Add your screenshot here
