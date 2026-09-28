@@ -175,11 +175,8 @@ def lambda_handler(event, context):
 ```
 ---
 # EventBridge Rule
-<img width="1669" height="883" alt="image" src="https://github.com/user-attachments/assets/64ad9c68-7e96-4783-bc48-8fba224bc5b2" />
 
----
-
-# ⏰ **CloudWatch Cron Schedule**
+#⏰ **CloudWatch Cron Schedule**
 
 ### ✔ Run every day at 8 PM
 cron(0 20 * * ? *)
