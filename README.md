@@ -2,24 +2,25 @@
 ---
 ##📘**AWS Cost-Optimization Automation (Lambda + EventBridge + SNS)**
 
-Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs stale resource identification and cleanup tasks such as stopping and deleting tagged resources 
+📌Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs stale resource identification and cleanup tasks, such as stopping and deleting tagged resources 
 
 ## 🚀 Architecture Overview
 AWS Cost Optimization Automation identifying stale resources from EC2, RDS & EBS and Cleanup
 This automation uses three AWS services:
-1. AWS Lambda runs the Python script that:
-•	Checks EC2, RDS, EBS resources
-•	Performs cleanup
-•	Sends an SNS report
-2.	Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
-•	Stops EC2 instances
-•	Stops RDS instances
-•	Deletes EBS snapshots
-•	Deletes Unattached volumes
-3.	Lambda performs cleanup
-4.	Amazon SNS Sends a **daily cost & cleanup report** summarizing the cleanup.
-5.	Runs automatically using **EventBridge Cron Scheduler**. You receive a daily summary in your inbox
----
+```
+AWS Lambda runs the Python script that
+├──	Checks EC2, RDS, EBS resources
+├──	Performs cleanup
+├──	Sends an SNS report
+Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
+├──	Stops EC2 instances
+├──	Stops RDS instances
+├──	Deletes EBS snapshots
+├──	Deletes Unattached volumes
+Lambda performs cleanup
+Amazon SNS Sends a **daily cost & cleanup report** summarizing the cleanup.
+Runs automatically using **EventBridge Cron Scheduler**. You receive a daily summary in your inbox
+```
 ----
 ## 📁 Project Structure overview
 
