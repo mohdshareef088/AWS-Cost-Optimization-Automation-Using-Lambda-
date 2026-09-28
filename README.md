@@ -13,10 +13,19 @@ AWS Lambda runs the Python script that
 ├──	Performs cleanup
 ├──	Sends an SNS report
 Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
-├──	Stops EC2 instances
-├──	Stops RDS instances
-├──	Deletes EBS snapshots
-├──	Deletes Unattached volumes
+EventBridge Rule (cron)
+        |
+        v
+   Lambda Function
+        |
+        |--- Stop EC2
+        |--- Stop RDS
+        |--- Delete old snapshots
+        |--- Delete unused EBS volumes
+        |
+        v
+       SNS → Email Notification
+
 Lambda performs cleanup
 Amazon SNS Sends a **daily cost & cleanup report** summarizing the cleanup.
 Runs automatically using **EventBridge Cron Scheduler**. You receive a daily summary in your inbox
@@ -33,8 +42,11 @@ lambda-automation/
 ```
 ---
 📸 Screenshots
+<img width="1547" height="824" alt="image" src="https://github.com/user-attachments/assets/5e3c1c37-5114-43b9-8ca7-8cf3f45ee6f8" />
+
 EventBridge Rule
-Add your screenshot here
+<img width="1669" height="883" alt="image" src="https://github.com/user-attachments/assets/64ad9c68-7e96-4783-bc48-8fba224bc5b2" />
+
 Lambda Execution Logs
 Add your screenshot here
 SNS Email Report
