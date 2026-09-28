@@ -41,25 +41,16 @@ lambda-automation/
 └── cloudwatch-cron.json      # Cron schedule config
 ```
 ---
-📸 Screenshots
+# 📸 Screenshots
+
 Roles
 
 <img width="1844" height="818" alt="image" src="https://github.com/user-attachments/assets/e0331721-7536-473b-b9f5-0460936f66f9" />
 
 <img width="1844" height="818" alt="image" src="https://github.com/user-attachments/assets/f446bd58-7442-4467-8259-a5ca447413b5" />
 
-EventBridge Rule
-<img width="1669" height="883" alt="image" src="https://github.com/user-attachments/assets/64ad9c68-7e96-4783-bc48-8fba224bc5b2" />
-
-Lambda Execution Logs
-Add your screenshot here
-SNS Email Report
-<img width="1888" height="672" alt="image" src="https://github.com/user-attachments/assets/30ad3e6e-2c41-49fc-9ef6-dd4a70f8afb0" />
-
-
-```
 # 🌐 **🔐IAM Permissions Required**
-
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -182,25 +173,9 @@ def lambda_handler(event, context):
 
     return {"status": "success", "details": report}
 ```
-
 ---
-
-# 📧 **SNS Email Setup**
-
-```python
-SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:140447104913:DailyCostReport"
-```
-
-### 2️⃣ Adding Email Subscription
-
-SNS → Topic → Subscriptions → Create Subscription
-
-- Protocol: **Email**
-- Endpoint: **your email**
-<img width="1404" height="626" alt="image" src="https://github.com/user-attachments/assets/991c54ff-ef7d-4b77-a53a-195d263c984e" />
-
-Confirm the email.
-<img width="919" height="506" alt="image" src="https://github.com/user-attachments/assets/152ccbde-0533-48ed-aea9-b6bff3d97eff" />
+# EventBridge Rule
+<img width="1669" height="883" alt="image" src="https://github.com/user-attachments/assets/64ad9c68-7e96-4783-bc48-8fba224bc5b2" />
 
 ---
 
@@ -218,7 +193,6 @@ cron(0/30 * * * ? *)
 <img width="1732" height="793" alt="image" src="https://github.com/user-attachments/assets/507fde31-feb7-4ae9-b3a5-a745063d7ab0" />
 
 ---
-
 
 # 🧪 **Testing the Lambda**
 
@@ -241,27 +215,35 @@ Expected output:
 ```
 <img width="1582" height="663" alt="image" src="https://github.com/user-attachments/assets/cfae9c70-047d-415b-9ee2-e66dfb6cdb32" />
 
-And you will receive an email report.
+---
+
+# Lambda Execution Logs
+
+<img width="1857" height="667" alt="image" src="https://github.com/user-attachments/assets/c07261a6-8a38-4035-84d5-fdec9b3a78aa" />
 
 ---
 
-# 🏁 Final Notes
+# 📧 **SNS Email Setup**
 
-This automation is perfect for:
-
-- Dev/Test environments  
-- Reducing AWS monthly bills  
-- Cleaning unused resources  
-- Auto-shutdown outside business hours  
-- Daily reporting  
-
+```python
+SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:140447104913:DailyCostReport"
+```
 ---
 
-If you want bro, I can also:
+### 2️⃣ Adding Email Subscription
 
-🔥 Add **Cost Explorer API** to show daily AWS cost  
-🔥 Add **Slack notifications**  
-🔥 Add **S3 logging**  
-🔥 Add **Terraform version** of this automation  
+SNS → Topic → Subscriptions → Create Subscription
 
-Just tell me.
+- Protocol: **Email**
+- Endpoint: **your email**
+<img width="1404" height="626" alt="image" src="https://github.com/user-attachments/assets/991c54ff-ef7d-4b77-a53a-195d263c984e" />
+
+Confirm the email.
+<img width="919" height="506" alt="image" src="https://github.com/user-attachments/assets/152ccbde-0533-48ed-aea9-b6bff3d97eff" />
+
+# SNS Email Report
+---
+You will also receive an email report.
+ <img width="1888" height="672" alt="image" src="https://github.com/user-attachments/assets/30ad3e6e-2c41-49fc-9ef6-dd4a70f8afb0" />
+---
+
