@@ -11,7 +11,7 @@ This automation uses three AWS services:
 •	Checks EC2, RDS, EBS resources
 •	Performs cleanup
 •	Sends an SNS report
-5.	Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
+2.	Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
 •	Stops EC2 instances
 •	Stops RDS instances
 •	Deletes EBS snapshots
