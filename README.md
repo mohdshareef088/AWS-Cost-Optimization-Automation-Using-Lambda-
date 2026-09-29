@@ -41,54 +41,7 @@ lambda-automation/
 └── cloudwatch-cron.json      # Cron schedule config
 ```
 ---
-# 📸 Screenshots
 
-Roles
-
-<img width="1844" height="818" alt="image" src="https://github.com/user-attachments/assets/e0331721-7536-473b-b9f5-0460936f66f9" />
-
-<img width="1844" height="818" alt="image" src="https://github.com/user-attachments/assets/f446bd58-7442-4467-8259-a5ca447413b5" />
-
-# 🌐 **🔐IAM Permissions Required**
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:StopInstances",
-                "ec2:DescribeSnapshots",
-                "ec2:DeleteSnapshot",
-                "ec2:DescribeVolumes",
-                "ec2:DeleteVolume",
-                "ec2:DescribeTags"
-                "sns:Publish"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "rds:DescribeDBInstances",
-                "rds:ListTagsForResource",
-                "rds:StopDBInstance"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
 
 # 🌐 **Lambda Function**
 
@@ -174,9 +127,57 @@ def lambda_handler(event, context):
     return {"status": "success", "details": report}
 ```
 ---
+# 📸 Screenshots
+
+Roles
+
+<img width="1844" height="818" alt="image" src="https://github.com/user-attachments/assets/e0331721-7536-473b-b9f5-0460936f66f9" />
+
+
+# 🌐 **🔐IAM Permissions Required**
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:StopInstances",
+                "ec2:DescribeSnapshots",
+                "ec2:DeleteSnapshot",
+                "ec2:DescribeVolumes",
+                "ec2:DeleteVolume",
+                "ec2:DescribeTags"
+                "sns:Publish"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rds:DescribeDBInstances",
+                "rds:ListTagsForResource",
+                "rds:StopDBInstance"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+---
 # EventBridge Rule
 
-#⏰ **CloudWatch Cron Schedule**
+#⏰ **Cron Schedule**
 
 ### ✔ Run every day at 8 PM
 cron(0 20 * * ? *)
@@ -241,6 +242,7 @@ Confirm the email.
 # SNS Email Report
 ---
 You will also receive an email report.
- <img width="1888" height="672" alt="image" src="https://github.com/user-attachments/assets/30ad3e6e-2c41-49fc-9ef6-dd4a70f8afb0" />
+
+<img width="1888" height="672" alt="image" src="https://github.com/user-attachments/assets/30ad3e6e-2c41-49fc-9ef6-dd4a70f8afb0" />
 ---
 
