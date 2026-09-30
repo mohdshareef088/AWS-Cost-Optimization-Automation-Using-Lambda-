@@ -147,6 +147,7 @@ Policies for the Lambda execution role:
 ├──AWSLambdaBasicExecutionRole
 
 ```
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -185,17 +186,18 @@ Policies for the Lambda execution role:
     ]
 }
 ```
----
-# EventBridge Rule
 
-#⏰ **Cron Schedule**
+---
+
+## ⏰**EventBridge Rule Cron Schedule**
+
 ### ✔ Run every 30 minutes
 cron(0/30 * * * ? *)
 
 <img width="1732" height="793" alt="image" src="https://github.com/user-attachments/assets/507fde31-feb7-4ae9-b3a5-a745063d7ab0" />
 
 ---
-
+---
 # 🧪 **Testing the Lambda**
 
 ### Manual test:
@@ -204,21 +206,10 @@ Go to Lambda → Test → Create test event → Run.
 
 Expected output:
 
-```
-{
-  "status": "success",
-  "details": [
-    "Stopped EC2 instances: [...]",
-    "Stopped RDS instances: [...]",
-    "Deleted snapshots: [...]",
-    "Deleted unattached volumes: [...]"
-  ]
-}
-```
 <img width="1582" height="663" alt="image" src="https://github.com/user-attachments/assets/cfae9c70-047d-415b-9ee2-e66dfb6cdb32" />
 
 ---
-
+---
 # Lambda Execution Logs
 
 <img width="1857" height="667" alt="image" src="https://github.com/user-attachments/assets/c07261a6-8a38-4035-84d5-fdec9b3a78aa" />
@@ -236,8 +227,6 @@ SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:140447104913:DailyCostReport"
 
 SNS → Topic → Subscriptions → Create Subscription
 
-- Protocol: **Email**
-- Endpoint: **your email**
 <img width="1404" height="626" alt="image" src="https://github.com/user-attachments/assets/991c54ff-ef7d-4b77-a53a-195d263c984e" />
 
 Confirm the email.
