@@ -4,16 +4,19 @@
 
 📌Automated system using Lambda, EventBridge, and SNS. This project runs daily and performs stale resource identification and cleanup tasks, such as stopping and deleting tagged resources 
 
-## 🚀 Architecture Overview
-AWS Cost Optimization Automation identifying stale resources from EC2, RDS & EBS and Cleanup
-This automation uses three AWS services:
+## 📦 Features
 ```
-AWS Lambda runs the Python script that
-├──	Checks EC2, RDS, EBS resources
-├──	Performs cleanup
-├──	Sends an SNS report
-Amazon EventBridge triggers the **Lambda function** on a schedule (daily). Stops tagged resources with **AutoStop=true**
-EventBridge Rule (cron)
+├──Stop idle EC2 instances
+├──Stop unused RDS instances
+├──Delete old EBS snapshots
+├──Delete unattached EBS volumes
+├──Daily SNS email report
+├──Automated scheduling via EventBridge
+├──IAM roles for secure execution
+```
+## 🚀 Architecture Overview
+```
+Scheduled EventBridge Rule (cron)
         |
         v
    Lambda Function
@@ -25,24 +28,24 @@ EventBridge Rule (cron)
         |
         v
        SNS → Email Notification
-
-Lambda performs cleanup
-Amazon SNS Sends a **daily cost & cleanup report** summarizing the cleanup.
-Runs automatically using **EventBridge Cron Scheduler**. You receive a daily summary in your inbox
 ```
 ----
-## 📁 Project Structure overview
+## ⚙️Deployment Steps
 
 ```
-lambda-automation/
-│
-├── lambda_function.py        # Main Lambda logic
-├── sns_report.py             # SNS email sender            
-└── cloudwatch-cron.json      # Cron schedule config
+Create a Lambda function and upload Python code that
+├──Checks EC2, RDS, EBS resources
+├──Performs cleanup
+├──Sends an SNS report
+Attach an IAM role to access required resources
+Create an EventBridge schedule that triggers the **Lambda function** on a schedule (daily).
+Stops tagged resources with **AutoStop=true**
+Test Lambda manually; it performs cleanup.
+Create an SNS Topic subscribing to the email. Verify the SNS email.
+SNS sends a **daily cost & cleanup report** summarizing the cleanup, and you receive a daily summary in your inbox
+Push to GitHub
 ```
----
-
-
+----
 # 🌐 **Lambda Function**
 
 ```python
@@ -135,6 +138,14 @@ Roles
 
 
 # 🌐 **🔐IAM Permissions Required**
+
+Policies for the Lambda execution role:
+```
+├──AmazonEC2FullAccess
+├──AmazonRDSFullAccess
+├──AmazonSNSFullAccess
+├──AWSLambdaBasicExecutionRole
+
 ```
 {
     "Version": "2012-10-17",
@@ -178,13 +189,6 @@ Roles
 # EventBridge Rule
 
 #⏰ **Cron Schedule**
-
-### ✔ Run every day at 8 PM
-cron(0 20 * * ? *)
-
-### ✔ Run every night at 2 AM
-cron(0 2 * * ? *)
-
 ### ✔ Run every 30 minutes
 cron(0/30 * * * ? *)
 
