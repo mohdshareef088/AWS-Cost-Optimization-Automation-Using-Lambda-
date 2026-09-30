@@ -236,6 +236,8 @@ Confirm the email.
 ---
 You will also receive an email report.
 
-<img width="1888" height="672" alt="image" src="https://github.com/user-attachments/assets/30ad3e6e-2c41-49fc-9ef6-dd4a70f8afb0" />
+<img width="1339" height="384" alt="image" src="https://github.com/user-attachments/assets/6162e47a-20b2-447b-8452-d85887ab71d0" />
+
+
 ---
 
